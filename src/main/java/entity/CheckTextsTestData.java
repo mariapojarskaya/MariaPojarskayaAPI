@@ -15,8 +15,8 @@ public class CheckTextsTestData {
 
     public static final CheckTextsTestData NO_MISTAKES_TEXTS =
             new CheckTextsTestData(0, 0, 1, new String[]{"Every time you register for an online service",
-                                                                            "send an email",
-                                                                            "download a video or \n upload a photo - your digital footprint can be revealed"}, null);
+                    "send an email",
+                    "download a video or \n upload a photo - your digital footprint can be revealed"}, null);
     public static final CheckTextsTestData TEXTS_WITH_MISTAKES =
             new CheckTextsTestData(0, 0, 1, new String[]{"Every tiime you register for an online service",
                     "send an emil",
