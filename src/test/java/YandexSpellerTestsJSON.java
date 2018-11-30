@@ -52,12 +52,12 @@ public class YandexSpellerTestsJSON {
                 .body(RegexMatcher.matchesRegex(NO_MISTAKE_RESPONSE));
     }
     // 2
-    @Test(description = "Assert that api return right text when there is invalid latter", retryAnalyzer = utils.RetryAnalyzer.class)
+    @Test(description = "Assert that api return right text when there is invalid letter", retryAnalyzer = utils.RetryAnalyzer.class)
     public void invalidLetterTest() {
         List<YandexSpellerAnswer> answers =
                 YandexSpellerApi.getYandexSpellerAnswers(
                         YandexSpellerApi.with().text(INVALID_LETTER.text).callCheckText());
-        assertThat("expected number of answers is wrong.", answers.size(), Matchers.not(0));
+        assertThat("Api return wrong text when there is invalid letter.", answers.size(), Matchers.not(0));
         assertThat(answers.get(INVALID_LETTER.wIndex).s.get(INVALID_LETTER.sIndex),
                 equalTo(INVALID_LETTER.rightWords.get(INVALID_LETTER.wIndex)));
     }
@@ -67,17 +67,17 @@ public class YandexSpellerTestsJSON {
         List<YandexSpellerAnswer> answers =
                 YandexSpellerApi.getYandexSpellerAnswers(
                         YandexSpellerApi.with().text(MISSED_LETTER.text).callCheckText());
-        assertThat("expected number of answers is wrong.", answers.size(), Matchers.not(0));
+        assertThat("Api return wrong text when there is missed latter.", answers.size(), Matchers.not(0));
         assertThat(answers.get(MISSED_LETTER.wIndex).s.get(MISSED_LETTER.sIndex),
                 equalTo(MISSED_LETTER.rightWords.get(MISSED_LETTER.wIndex)));
     }
     // 4
-    @Test(description = "Assert that api return right text when there is excess latter", retryAnalyzer = utils.RetryAnalyzer.class)
+    @Test(description = "Assert that api return right text when there is excess letter", retryAnalyzer = utils.RetryAnalyzer.class)
     public void excessLetterTest() {
         List<YandexSpellerAnswer> answers =
                 YandexSpellerApi.getYandexSpellerAnswers(
                         YandexSpellerApi.with().text(EXCESS_LETTER.text).callCheckText());
-        assertThat("expected number of answers is wrong.", answers.size(), Matchers.not(0));
+        assertThat("Api return wrong text when there is excess letter.", answers.size(), Matchers.not(0));
         assertThat(answers.get(EXCESS_LETTER.wIndex).s.get(EXCESS_LETTER.sIndex),
                 equalTo(EXCESS_LETTER.rightWords.get(EXCESS_LETTER.wIndex)));
     }
@@ -87,7 +87,7 @@ public class YandexSpellerTestsJSON {
         List<YandexSpellerAnswer> answers =
                 YandexSpellerApi.getYandexSpellerAnswers(
                         YandexSpellerApi.with().text(WRONG_CONTEXT_WORD.text).callCheckText());
-        assertThat("expected number of answers is wrong.", answers.size(), Matchers.not(0));
+        assertThat("Wrong spelling of words depending on the context.", answers.size(), Matchers.not(0));
         assertThat(answers.get(WRONG_CONTEXT_WORD.wIndex).s.get(WRONG_CONTEXT_WORD.sIndex),
                 equalTo(WRONG_CONTEXT_WORD.rightWords.get(WRONG_CONTEXT_WORD.wIndex)));
     }
@@ -97,7 +97,7 @@ public class YandexSpellerTestsJSON {
         List<YandexSpellerAnswer> answers =
                 YandexSpellerApi.getYandexSpellerAnswers(
                         YandexSpellerApi.with().text(MISTAKES_IN_THREE_WORDS.text).callCheckText());
-        assertThat("expected number of answers is wrong.", answers.size(), Matchers.not(0));
+        assertThat("Api return wrong texts.", answers.size(), Matchers.not(0));
         for (String rightWord : MISTAKES_IN_THREE_WORDS.rightWords) {
             assertThat(answers.get(MISTAKES_IN_THREE_WORDS.rightWords.indexOf(rightWord)).s.get(MISTAKES_IN_THREE_WORDS.sIndex),
                     equalTo(rightWord));
@@ -109,7 +109,7 @@ public class YandexSpellerTestsJSON {
         List<YandexSpellerAnswer> answers =
                 YandexSpellerApi.getYandexSpellerAnswers(
                         YandexSpellerApi.with().text(WORD_WITH_DIGITS.text).callCheckText());
-        assertThat("expected number of answers is wrong.", answers.size(), Matchers.not(0));
+        assertThat("Expected number of answers is wrong.", answers.size(), Matchers.not(0));
         assertThat(answers.get(WORD_WITH_DIGITS.wIndex).s.get(WORD_WITH_DIGITS.sIndex),
                 equalTo(WORD_WITH_DIGITS.rightWords.get(WORD_WITH_DIGITS.wIndex)));
     }
@@ -142,7 +142,7 @@ public class YandexSpellerTestsJSON {
         List<YandexSpellerAnswer> answers =
                 YandexSpellerApi.getYandexSpellerAnswers(
                         YandexSpellerApi.with().text(INCORRECT_UPPERCASE_LETTER.text).callCheckText());
-        assertThat("expected number of answers is wrong.", answers.size(), Matchers.not(0));
+        assertThat("Service doesn't find the incorrect use of uppercase and lowercase letters.", answers.size(), Matchers.not(0));
         assertThat(answers.get(INCORRECT_UPPERCASE_LETTER.wIndex).s.get(INCORRECT_UPPERCASE_LETTER.sIndex),
                 equalTo(INCORRECT_UPPERCASE_LETTER.rightWords.get(INCORRECT_UPPERCASE_LETTER.wIndex)));
     }
@@ -152,7 +152,7 @@ public class YandexSpellerTestsJSON {
         List<YandexSpellerAnswer> answers =
                 YandexSpellerApi.getYandexSpellerAnswers(
                         YandexSpellerApi.with().options(FIND_REPEAT_WORDS).text(REPETITION_WORDS.text).callCheckText());
-        assertThat("expected number of answers is wrong.", answers.size(), Matchers.not(0));
+        assertThat("Service doesn't find repetition of words.", answers.size(), Matchers.not(0));
         assertThat(answers.get(REPETITION_WORDS.wIndex).s.get(REPETITION_WORDS.sIndex),
                 equalTo(REPETITION_WORDS.rightWords.get(REPETITION_WORDS.wIndex)));
     }
